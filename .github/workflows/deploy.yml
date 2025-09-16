@@ -40,8 +40,11 @@ jobs:
           docker build -t $ECR_REGISTRY/$FRONTEND_REPO:latest ./frontend
           docker push $ECR_REGISTRY/$FRONTEND_REPO:latest
 
-      - name: Update kubeconfig
-        run: aws eks update-kubeconfig --region $AWS_REGION --name ${{ secrets.EKS_CLUSTER_NAME }}
+      - name: Setup kubeconfig for EKS
+        uses: aws-actions/eks-setup-kubectl@v1
+        with:
+          cluster-name: ${{ secrets.EKS_CLUSTER_NAME }}
+          region: ${{ secrets.AWS_REGION }}
 
       - name: Deploy to EKS
         run: kubectl apply -f k8s/

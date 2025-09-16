@@ -60,5 +60,5 @@ jobs:
       # --- Force rollout restart (ensure new image is pulled) ---
       - name: Restart deployments
         run: |
-          kubectl rollout restart deployment backend-deployment
-          kubectl rollout restart deployment frontend-deployment
+          kubectl rollout restart deployment backend
+          kubectl rollout restart deployment frontend

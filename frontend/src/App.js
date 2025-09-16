@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>📚 Bookstore Frontend</h1>
+      <h1>📚 Bookstore </h1>
       {error && <p style={{ color: "red" }}>❌ {error}</p>}
       {books.length === 0 && !error && <p>Loading books...</p>}
       <ul>
